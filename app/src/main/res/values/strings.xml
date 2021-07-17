@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Personal</string>
+    <string name="swipe_to_delete"><![CDATA[<- Swipe to delete ->]]></string>
+</resources>

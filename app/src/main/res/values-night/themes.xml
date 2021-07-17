@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.RunnableActivityTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="spark_SparkViewStyle">@style/MySparkViewStyle</item>
+    </style>
+
+    <style name="MySparkViewStyle" parent="@style/spark_SparkView">
+        <item name="spark_lineColor">@color/sparkline_color</item>
+        <item name="spark_lineWidth">@dimen/spark_line_width</item>
+        <item name="spark_cornerRadius">@dimen/spark_corner_radius</item>
+        <item name="spark_fill">false</item>
+
+        <item name="spark_baseLineColor">@color/spark_base_line_color</item>
+        <item name="spark_baseLineWidth">@dimen/spark_base_line_width</item>
+
+        <item name="spark_scrubLineColor">@color/spark_scrub_line_color</item>
+        <item name="spark_scrubLineWidth">@dimen/spark_scrub_line_width</item>
+        <item name="spark_scrubEnabled">true</item>
+
+        <item name="spark_animateChanges">true</item>
+    </style>
+</resources>
