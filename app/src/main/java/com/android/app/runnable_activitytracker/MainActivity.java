@@ -39,30 +39,26 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    SparkView sparkView_distance, sparkView_time;
+
     private TrackViewModel viewModel;
 
     private TextView weatherCityName, txtTemp, weatherDescription, alert_text;
     private TextView forecast_toggle;
     private TextView txt_seeAll;
-
     private ExtendedFloatingActionButton btn_newWorkout;
 
     private ImageView weatherStatusIcon, alert_icon;
-
     private RecyclerView forecast_RecyclerView, recentWorkouts_RecyclerView;
 
     private RequestQueue mReqQue;
-
     private ArrayList<Weather> weatherArrayList = new ArrayList<>();
 
     private List<Track> recentTracks = new ArrayList<>();
-
     private List<Track> allTracks = new ArrayList<>();
+
     private ArrayList<Float> yDataDistance = new ArrayList<>();
     private ArrayList<Float> yDataTime = new ArrayList<>();
-
-    SparkView sparkView_distance, sparkView_time;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,11 +147,18 @@ public class MainActivity extends AppCompatActivity {
 
         recentWorkouts_RecyclerView.setAdapter(recentTrackMainRecVAdapter);
         recentWorkouts_RecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recentTrackMainRecVAdapter.setOnItemClickListener(new RecentTrackMainRecVAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Track track) {
+                Intent intent = new Intent(MainActivity.this, ActivityTrack.class);
+                intent.putExtra(Constants.intent_track_id_tag, track.getId());
+                startActivity(intent);
+            }
+        });
 
-
-        sparkView_distance = (SparkView) findViewById(R.id.sparkview_distance);
+        //sparkView_distance = (SparkView) findViewById(R.id.sparkview_distance);
         sparkView_time = (SparkView) findViewById(R.id.sparkview_time);
-
+        sparkView_distance = (SparkView) findViewById(R.id.sparkview_distance);
 
         SparkLineAdapter sparkLineAdapter = new SparkLineAdapter(yDataDistance);
         SparkLineAdapter sparkLineAdapter1 = new SparkLineAdapter(yDataTime);

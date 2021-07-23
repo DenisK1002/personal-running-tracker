@@ -40,7 +40,7 @@ public class TrackViewModel extends AndroidViewModel {
         return allTracks;
     }
 
-    public static LiveData<List<Track>> getAllTracksASC() {
+    public LiveData<List<Track>> getAllTracksASC() {
         return allTracksASC;
     }
 

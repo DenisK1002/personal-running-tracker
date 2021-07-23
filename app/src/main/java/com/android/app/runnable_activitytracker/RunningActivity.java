@@ -10,6 +10,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -476,6 +477,7 @@ public class RunningActivity extends AppCompatActivity implements OnMapReadyCall
 
     private void saveRun() {
         zoomToWholeTrack();
+        SystemClock.sleep(1000);
 
         mMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
             @Override

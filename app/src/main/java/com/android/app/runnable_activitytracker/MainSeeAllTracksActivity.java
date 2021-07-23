@@ -1,27 +1,22 @@
 package com.android.app.runnable_activitytracker;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.app.runnable_activitytracker.db.Track;
 
@@ -48,11 +43,19 @@ public class MainSeeAllTracksActivity extends AppCompatActivity {
         recyclerView.setAdapter(recentTrackMainRecVAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        recentTrackMainRecVAdapter.setOnItemClickListener(new RecentTrackMainRecVAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Track track) {
+                Intent intent = new Intent(MainSeeAllTracksActivity.this, ActivityTrack.class);
+                intent.putExtra(Constants.intent_track_id_tag, track.getId());
+                startActivity(intent);
+            }
+        });
+
         viewModel.getAllTracks().observe(this, new Observer<List<Track>>() {
             @Override
             public void onChanged(List<Track> tracks) {
-                ArrayList<Track> passer = new ArrayList<>();
-                passer.addAll(tracks);
+                ArrayList<Track> passer = new ArrayList<>(tracks);
                 recentTrackMainRecVAdapter.setTracks(passer);
             }
         });

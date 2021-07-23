@@ -1,6 +1,5 @@
 package com.android.app.runnable_activitytracker;
 
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.app.runnable_activitytracker.db.Track;
-import com.android.app.runnable_activitytracker.weather.WeatherForecastRecViewAdapter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,6 +20,7 @@ public class RecentTrackMainRecVAdapter extends RecyclerView.Adapter<RecentTrack
 
     ArrayList<Track> tracks = new ArrayList<>();
 
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -71,6 +69,24 @@ public class RecentTrackMainRecVAdapter extends RecyclerView.Adapter<RecentTrack
             txt_date = itemView.findViewById(R.id.txt_workout_adapter_date);
             txt_distance = itemView.findViewById(R.id.txt_workout_adapter_distance);
             txt_time = itemView.findViewById(R.id.txt_duration_adapter);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(tracks.get(position));
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Track track);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }

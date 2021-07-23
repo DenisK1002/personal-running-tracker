@@ -13,4 +13,7 @@
     <color name="green">#88FD00</color>
     <color name="gray">#88FD00</color>
     <color name="sparkline_color">#88FD00</color>
+    <color name="linechart_color">#00BCD4</color>
+    <color name="lineProgress_background">#C86767</color>
+    <color name="lineProgress_foreground">#FFCC0000</color>
 </resources>

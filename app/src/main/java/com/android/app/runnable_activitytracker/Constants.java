@@ -14,4 +14,6 @@ class Constants {
     static final String resetLocationService = "resetLocationService";
 
     static final Float POLYLINE_WIDTH = Float.valueOf(8);
+
+    public static final String intent_track_id_tag = "TRACK_ID_INTENT";
 }

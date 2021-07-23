@@ -33,6 +33,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ActivityTrack"></activity>
+
         <service
             android:name=".TrackerService"
             android:enabled="true"

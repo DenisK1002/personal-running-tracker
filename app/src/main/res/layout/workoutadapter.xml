@@ -37,7 +37,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/const_name"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="77dp"
             android:layout_marginLeft="20dp"
             android:paddingTop="5dp"
@@ -49,26 +49,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NAME"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_workout_adapter_distance"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/txt_workout_adapter_distance" />
 
             <TextView
                 android:id="@+id/txt_workout_adapter_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DATE"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txt_workout_adapter_trackName" />
+                app:layout_constraintBottom_toBottomOf="@+id/txt_duration_adapter"
+                app:layout_constraintStart_toStartOf="@+id/txt_workout_adapter_trackName"
+                app:layout_constraintTop_toTopOf="@+id/txt_duration_adapter" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/const_data"
-            android:layout_width="wrap_content"
-            android:layout_height="77dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_alignParentRight="true">
+
 
             <ImageView
                 android:id="@+id/imageView"
@@ -95,9 +90,12 @@
                 android:id="@+id/imv_time_adapter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_time"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
                 android:id="@+id/txt_duration_adapter"
@@ -106,9 +104,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/imageView"
                 android:text="Time"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/imv_time_adapter"
                 app:layout_constraintStart_toEndOf="@+id/imv_time_adapter"
-                app:layout_constraintTop_toTopOf="@+id/imv_time" />
+                app:layout_constraintTop_toTopOf="@+id/imv_time_adapter" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

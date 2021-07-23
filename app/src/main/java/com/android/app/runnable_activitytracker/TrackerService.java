@@ -88,6 +88,9 @@ public class TrackerService extends Service {
         prototype_speed.add(locationResult.getLastLocation().getSpeed());
         speeds_chart.postValue(prototype_speed);
 
+        //average running speed arraylist
+        speeds.add(locationResult.getLastLocation().getSpeed());
+
         prototype_distances.add(trackLength(pathLines));
         distances.postValue(prototype_distances);
 
@@ -130,8 +133,10 @@ public class TrackerService extends Service {
 
     private void pace_checker() {
         if (TrackingDataFormatter.trackLength(pace_checker) >= 1000.0f) {
-            pace_time = System.currentTimeMillis() - pace_time;
-            pace.postValue(pace_time);
+            if (pace_time > (System.currentTimeMillis() - pace_time)) {
+                pace_time = System.currentTimeMillis() - pace_time;
+                pace.postValue(pace_time);
+            }
 
             ArrayList<LatLng> initial_new = new ArrayList<>();
             pace_checker.clear();
